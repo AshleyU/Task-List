@@ -6,3 +6,9 @@ h1 {
     font-family: 'Courgette', cursive;
     text-shadow: 1px 1px 5px black;
 }
+
+.headings {
+    margin-top: 3rem;
+    font-family: 'Abel', sans-serif;
+    text-decoration: underline;
+}
