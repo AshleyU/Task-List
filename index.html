@@ -19,25 +19,29 @@
     <body>
         <div class="container">
             <h1>Task List</h1>
-
-            <h2>ADD NEW TASK</h2>
-            <h2>TASKS</h2>
-
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Task Name:</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Task Name">
+            <div class="row">
+                <div class="col">
+                    <h2>ADD NEW TASK</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Task Name:</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Task Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Task Description:</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Assigned to:</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Assigned to">
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Task Description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="col">
+                        <h2>TASKS</h2>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Assigned to:</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Assigned to">
-                </div>
-            </form>
-
+            </div>
         </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
