@@ -8,6 +8,9 @@ const validFormFieldInput = (data) => {
     const assignedTo = document.querySelector('#assignedTo').value;
     const dueDate = document.querySelector('#dueDate').value;
     const selectedStatus = document.querySelector('#selectedStatus').value;
+    if( task == '' ) {
+        toggleAlert();
+    }
 }
 
 //Changed submit button to normal button type and adding event listener
@@ -15,16 +18,8 @@ submitButton.addEventListener('click', validFormFieldInput);
 
 function toggleAlert() {
     let alert = document.getElementById('alert');
-    let alertDisplay = alert.style.display;
-
-    if (alertDisplay == 'block') {
-        alert.style.display = 'none';
-    }
-    else {
-        alert.style.display = 'block';
-        alert.innerHTML = 'test';
-    }
- }
+    alert.style.display = "block";
+}
 
 //add an alery pop up after submitting if there is an error in the form
 submitButton.addEventListener('click', toggleAlert);
