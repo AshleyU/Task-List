@@ -1,16 +1,17 @@
-//Implement a JavaScript function to validate your form fields
+// //Implement a JavaScript function to validate your form fields
 
-const newTaskNameInput = document.querySelector('#newTaskNameInput');
-const newTaskDescription = document.querySelector('#newTaskDescription');
-const assignedTo = document.querySelector('#assignedTo');
-const dueDate = document.querySelector('#dueDate');
-const selectedStatus = document.querySelector('#selectedStatus');
-const taskName = newTaskNameInput.value;
-const taskDescription = newTaskDescription.value;
-const assigned = assignedTo.value;
-const date = dueDate.value;
-const status = selectedStatus.value;
+const task = document.querySelector('#newTaskNameInput').value;
+const description = document.querySelector('#newTaskDescription').value;
+const assignedTo = document.querySelector('#assignedTo').value;
+const dueDate = document.querySelector('#dueDate').value;
+const selectedStatus = document.querySelector('#selectedStatus').value;
 
-const validFormFieldInput = (data) => {
-    
-}
+console.log(task);
+
+
+// const validFormFieldInput = (data) => {
+//     console.log(task);
+//     if (task == "") {
+//         return task;
+//     };
+// }
