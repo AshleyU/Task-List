@@ -12,3 +12,7 @@ h1 {
     font-family: 'Abel', sans-serif;
     text-decoration: underline;
 }
+
+.alert {
+    display: none;
+}
