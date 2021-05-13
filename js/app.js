@@ -3,10 +3,6 @@ const submitButton = document.getElementById('submitButton');
 const alert = document.getElementById('alert');
 const form = document.getElementById('form');
 
-let TaskMan = new TaskManager();
-//TaskMan.addTask('Han', 'Solo', 'Ashley', '5/13/2021', 'Working on it');
-console.log(TaskMan.tasks);
-
 const validFormFieldInput = (data) => {
     alert.style.display = 'none';
     return data !== null && data !== ""
@@ -17,8 +13,9 @@ form.addEventListener('submit', (event) => {
     const task = document.querySelector('#newTaskNameInput').value;
     const description = document.querySelector('#newTaskDescription').value;
     const assignedTo = document.querySelector('#assignedTo').value;
-    const selectedStatus = document.querySelector('#selectedStatus').value;
     const dueDate = document.querySelector('#dueDate').value;
+    const selectedStatus = document.querySelector('#selectedStatus').value;
+    
     if(!validFormFieldInput(task) || !validFormFieldInput(description) || !validFormFieldInput(assignedTo)) {
         alertPopup('All sections much be filled out.');
     } else if (selectedStatus === '' || selectedStatus === 'Select Status') {
@@ -27,15 +24,17 @@ form.addEventListener('submit', (event) => {
         alertPopup('Please select a due date.');
     } else {
         form.reset();
-    }
+        let TaskMan = new TaskManager();
+        TaskMan.addTask(task, description, assignedTo, dueDate, selectedStatus);
+        TaskMan.render();
+    } 
 });
 
 function alertPopup(message = 'Missing information in the form.') {
     alert.style.display = "block";
     alert.innerHTML = message;
 }
-const taskHtml = createTaskHtml();
-console.log(taskHtml);
+let taskHtml = createTaskHtml();
 
 
 
