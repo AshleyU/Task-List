@@ -9,6 +9,7 @@ const validFormFieldInput = (data) => {
     const description = document.querySelector('#newTaskDescription').value;
     const assignedTo = document.querySelector('#assignedTo').value;
     const selectedStatus = document.querySelector('#selectedStatus').value;
+    const dueDate = document.querySelector('#dueDate').value;
     console.log(selectedStatus);
     if( task === '' ) {
         alertPopup('The "Task Name" cannot be blank.');
@@ -18,6 +19,8 @@ const validFormFieldInput = (data) => {
         alertPopup('Please assign someone to the task.');
     } else if (selectedStatus === '' || selectedStatus === 'Select Status') {
         alertPopup('Please select a status.');
+    } else if ( dueDate === '') {
+        alertPopup('Please select a due date.');
     }
 }
 
