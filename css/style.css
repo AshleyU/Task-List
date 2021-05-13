@@ -16,3 +16,10 @@ h1 {
 .alert {
     display: none;
 }
+
+#green-status {
+    position: absolute; 
+    top: 15px;
+    right: 15px;
+    font-size: 1em;
+}
