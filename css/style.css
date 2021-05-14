@@ -23,3 +23,10 @@ h1 {
     right: 15px;
     font-size: 1em;
 }
+
+.done-button {
+    position: absolute; 
+    top: 55px;
+    right: 15px;
+    font-size: 1em;
+}

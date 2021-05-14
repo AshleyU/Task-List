@@ -3,6 +3,8 @@ const submitButton = document.getElementById('submitButton');
 const alert = document.getElementById('alert');
 const form = document.getElementById('form');
 
+let TaskMan = new TaskManager();
+
 const validFormFieldInput = (data) => {
     alert.style.display = 'none';
     return data !== null && data !== ""
@@ -24,7 +26,6 @@ form.addEventListener('submit', (event) => {
         alertPopup('Please select a due date.');
     } else {
         form.reset();
-        let TaskMan = new TaskManager();
         TaskMan.addTask(task, description, assignedTo, dueDate, selectedStatus);
         TaskMan.render();
     } 
@@ -36,7 +37,15 @@ function alertPopup(message = 'Missing information in the form.') {
 }
 let taskHtml = createTaskHtml();
 
+const taskListContainer = document.querySelector("#ul");
 
+taskListContainer.addEventListener('click', (event) => { 
+    if(event.target.classList.contains("done-button")) {
+        const parentTask = taskListContainer.firstChild;
+        let taskId = parseInt();
+        console.log(taskId);
+    }
+});
 
 
 
