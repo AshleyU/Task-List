@@ -3,14 +3,24 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, id) => {
     if (status === 'Done') {
         doneButtonVisibility = 'invisible';
     }
+
+    let pillColor = 'btn-secondary';
+    if (status === 'To Do') {
+        pillColor = 'btn-warning';
+    } else if (status === 'Working on it') {
+        pillColor = 'btn-info';
+    } else {
+        pillColor = 'btn-success';
+    }
+
     const taskHtml = `<li class="list-group-item" data-task-id = "${id}">
     <div class="card-body" id="data-task-id">
         <h5 class="card-title">${name}</h5>
         <h6 class="card-subtitle mb-2 text-muted">${description}</h6>
         <p class="card-text">${assignedTo}</p>
         <p class="card-text">${dueDate}</p>
-        <span class="badge badge-pill badge-success pull-right" id="green-status">${status}</span>
-        <button type="button" class="btn btn-secondary btn-sm done-button ${doneButtonVisibility}">Done</button>
+        <span class="badge badge-pill ${pillColor} pull-right" id="green-status">${status}</span>
+        <button type="button" class="btn  btn-secondary btn-sm done-button ${doneButtonVisibility}">Done</button>
     </div>
 </li>`
 return taskHtml;
