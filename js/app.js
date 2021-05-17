@@ -2,7 +2,7 @@
 const submitButton = document.getElementById('submitButton');
 const alert = document.getElementById('alert');
 const form = document.getElementById('form');
-
+const taskListContainer = document.querySelector("#ul");
 let TaskMan = new TaskManager();
 
 const validFormFieldInput = (data) => {
@@ -37,13 +37,20 @@ function alertPopup(message = 'Missing information in the form.') {
 }
 let taskHtml = createTaskHtml();
 
-const taskListContainer = document.querySelector("#ul");
-
 taskListContainer.addEventListener('click', (event) => { 
     if(event.target.classList.contains("done-button")) {
-        const parentTask = taskListContainer.firstChild;
-        let taskId = parseInt();
-        console.log(taskId);
+        const parentTask = event.target.parentElement.parentElement;
+        let taskId = parseInt(parentTask.getAttribute("data-task-id"));
+        let task = TaskMan.getTaskById(taskId);
+        task.status = 'Done';
+        
+        if (task.status === 'Done') {
+            event.target.classList.remove('visible');
+            event.target.classList.add('invisible');
+            console.log(event.target.classList);
+        } 
+
+        TaskMan.render();
     }
 });
 

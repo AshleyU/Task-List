@@ -1,4 +1,8 @@
 const createTaskHtml = (name, description, assignedTo, dueDate, status, id) => {
+    let doneButtonVisibility = 'visible';
+    if (status === 'Done') {
+        doneButtonVisibility = 'invisible';
+    }
     const taskHtml = `<li class="list-group-item" data-task-id = "${id}">
     <div class="card-body" id="data-task-id">
         <h5 class="card-title">${name}</h5>
@@ -6,7 +10,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, id) => {
         <p class="card-text">${assignedTo}</p>
         <p class="card-text">${dueDate}</p>
         <span class="badge badge-pill badge-success pull-right" id="green-status">${status}</span>
-        <button type="button" class="btn btn-secondary btn-sm done-button">Done</button>
+        <button type="button" class="btn btn-secondary btn-sm done-button ${doneButtonVisibility}">Done</button>
     </div>
 </li>`
 return taskHtml;
@@ -35,7 +39,6 @@ class TaskManager {
             let formattedDate = (date.getMonth()+1) + '/' + (date.getDate()+1) + '/' + date.getFullYear();
             let taskHtml = createTaskHtml(currentTask.name, currentTask.description, currentTask.assignedTo, formattedDate, currentTask.status, currentTask.id);
             tasksHtmlList.push(taskHtml);
-    
         }
         let joinedTasks = tasksHtmlList.join("\n");
         const taskli = document.getElementById('ul');
@@ -51,7 +54,6 @@ class TaskManager {
                 foundTask = task;
             }
         }
-        
         return foundTask;
     } 
 }
