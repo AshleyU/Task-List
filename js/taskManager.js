@@ -97,3 +97,5 @@ class TaskManager {
         this.tasks = newTasks;
     }
 }
+
+module.exports = TaskManager;
