@@ -81,13 +81,13 @@ class TaskManager {
     } deleteTask(taskId) {
         let newTasks = [];
         
-        for(let i = 0; i < newTasks.length; i++) {
-            let task = newTasks[i];
+        for(let i = 0; i < this.tasks.length; i++) {
+            let task = this.tasks[i];
             if(task.id != taskId) {
                 newTasks.push(task);
             }
         
-        this.tasks = newTasks;
+            this.tasks = newTasks;
         }
     
     }

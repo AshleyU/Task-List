@@ -42,8 +42,9 @@ function alertPopup(message = 'Missing information in the form.') {
 let taskHtml = createTaskHtml();
 
 taskListContainer.addEventListener('click', (event) => { 
+    const parentTask = event.target.parentElement.parentElement;
+    
     if(event.target.classList.contains("done-button")) {
-        const parentTask = event.target.parentElement.parentElement;
         let taskId = parseInt(parentTask.getAttribute("data-task-id"));
         let task = TaskMan.getTaskById(taskId);
         task.status = 'Done';
@@ -53,10 +54,18 @@ taskListContainer.addEventListener('click', (event) => {
             event.target.classList.add('invisible');
             console.log(event.target.classList);
         } 
-
         TaskMan.render();
         TaskMan.save();
     }
+
+    if (event.target.classList.contains("delete-button")) {
+        const newParentTask = parentTask;
+        let taskId = parseInt(newParentTask.getAttribute("data-task-id"));
+        TaskMan.deleteTask(taskId);
+        TaskMan.render();
+        TaskMan.save();
+    }
+
 });
 
 
