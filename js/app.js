@@ -5,6 +5,9 @@ const form = document.getElementById('form');
 const taskListContainer = document.querySelector("#ul");
 let TaskMan = new TaskManager();
 
+TaskMan.load();
+TaskMan.render();
+
 const validFormFieldInput = (data) => {
     alert.style.display = 'none';
     return data !== null && data !== ""
@@ -28,7 +31,8 @@ form.addEventListener('submit', (event) => {
         form.reset();
         TaskMan.addTask(task, description, assignedTo, dueDate, selectedStatus);
         TaskMan.render();
-    } 
+        TaskMan.save();
+    }
 });
 
 function alertPopup(message = 'Missing information in the form.') {
@@ -51,8 +55,11 @@ taskListContainer.addEventListener('click', (event) => {
         } 
 
         TaskMan.render();
+        TaskMan.save();
     }
 });
+
+
 
 
 

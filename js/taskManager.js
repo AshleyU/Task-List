@@ -21,6 +21,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, id) => {
         <p class="card-text">${dueDate}</p>
         <span class="badge badge-pill ${pillColor} pull-right" id="green-status">${status}</span>
         <button type="button" class="btn  btn-secondary btn-sm done-button ${doneButtonVisibility}">Done</button>
+        <button type="button" class="btn  btn-danger btn-sm delete-button">Delete</button>
     </div>
 </li>`
 return taskHtml;
@@ -65,5 +66,29 @@ class TaskManager {
             }
         }
         return foundTask;
-    } 
+    } save() {
+    const tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);
+    
+    const currentId = this.currentId.toString();
+    localStorage.setItem('currentId', currentId);
+    } load() {
+        let tasksJson = localStorage.getItem('tasks');
+        this.tasks = JSON.parse(tasksJson);
+
+        let currentId = localStorage.getItem('currentId');
+        this.currentId = parseInt(currentId);
+    } deleteTask(taskId) {
+        let newTasks = [];
+        
+        for(let i = 0; i < newTasks.length; i++) {
+            let task = newTasks[i];
+            if(task.id != taskId) {
+                newTasks.push(task);
+            }
+        
+        this.tasks = newTasks;
+        }
+    
+    }
 }
