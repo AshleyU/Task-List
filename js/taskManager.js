@@ -43,7 +43,7 @@ class TaskManager {
             this.tasks.push(newTask);
     } render () {
         let tasksHtmlList = [];
-        
+
         for (let i = 0; i < this.tasks.length; i++) {
             let currentTask = this.tasks[i];
             let date = new Date(currentTask.dueDate);
@@ -73,22 +73,27 @@ class TaskManager {
     const currentId = this.currentId.toString();
     localStorage.setItem('currentId', currentId);
     } load() {
-        let tasksJson = localStorage.getItem('tasks');
-        this.tasks = JSON.parse(tasksJson);
+       
+        if (localStorage.getItem('tasks')) {
+            let tasksJson = localStorage.getItem('tasks');
+            this.tasks = JSON.parse(tasksJson);
+        } 
 
-        let currentId = localStorage.getItem('currentId');
-        this.currentId = parseInt(currentId);
+        if(localStorage.getItem('currentId')) {
+            let currentId = localStorage.getItem('currentId');
+            this.currentId = parseInt(currentId);
+        }
+
     } deleteTask(taskId) {
         let newTasks = [];
         
         for(let i = 0; i < this.tasks.length; i++) {
             let task = this.tasks[i];
-            if(task.id != taskId) {
+            console.log(task.id);
+            if(task.id !== taskId) {
                 newTasks.push(task);
             }
-        
-            this.tasks = newTasks;
         }
-    
+        this.tasks = newTasks;
     }
 }
